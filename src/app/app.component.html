@@ -1,0 +1,37 @@
+<section class="navbar align-items-start">
+    <div class="container">
+        <div class="filter-bar d-flex flex-wrap">
+            <div class="form-group d-inline-block position-relative has-icon-left mb-2 mr-2 searching">
+                <input class="form-control bg-white search-bar" name="form-control-with-icon" #searchValue
+                       placeholder="Search" type="text">
+                <div class="form-control-position">
+                    <img src="assets/images/search.svg" class="img-fluid mb-1" alt="">
+                </div>
+            </div>
+            <div class="form-group d-inline-block position-relative has-icon-left mb-2 mr-2 selection">
+                <select class="custom-select">
+                    <option selected>Status: All</option>
+                    <option>Missed Call</option>
+                    <option>Follow Up</option>
+                </select>
+            </div>
+            <div class="form-group d-inline-block position-relative mb-2 mr-2" style="cursor: pointer;">
+                <div class="filter d-flex align-self-center">
+                    <img src="assets/images/filter.svg" class="mr-2" alt="">
+                    <span class="align-self-center">Filter</span>
+                </div>
+            </div>
+            <div class="form-group d-inline-block position-relative mb-2 mr-2" style="cursor: pointer;">
+                <div class="filter d-flex align-self-center">
+                    <img src="assets/images/customize.svg" class="mr-2" alt="">
+                    <span class="align-self-center">Customize</span>
+                </div>
+            </div>
+        </div>
+        <div class="new-btn">
+            <button class="btn new-call-btn px-4">+ New Call</button>
+        </div>
+    </div>
+</section>
+
+<router-outlet></router-outlet>

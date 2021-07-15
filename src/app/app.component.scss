@@ -1,0 +1,60 @@
+@import "~bootstrap-select/sass/bootstrap-select";
+
+.navbar {
+  background: #eef1f7;
+  height: 100%;
+}
+
+.form-control-position {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  display: block;
+  width: 2.5rem;
+  line-height: 2.5rem;
+  text-align: center;
+}
+
+.form-group {
+  .search-bar {
+    padding-left: 35px;
+    border-radius: 5px;
+    min-width: 200px;
+  }
+
+  input {
+    background: white;
+    border: 1px solid #EDEDEE;
+    color: #262B44;
+  }
+}
+
+.filter {
+  border-radius: 5px;
+  background: white;
+  border: 1px solid #EDEDEE;
+  color: #262B44;
+  height: 38px;
+  padding: 0 15px;
+}
+
+.new-call-btn {
+  border: 1px solid #5C77EA;
+  border-radius: 5px;
+  background: #EEF1F7;
+  color: #5C77EA;
+}
+
+.custom-select {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid #EDEDEE;
+  outline: none;
+  min-width: 200px;
+}
+
+.searching, .selection {
+  @media screen and (min-width: 320px) and (max-width: 575px) {
+    width: 100%;
+  }
+}
