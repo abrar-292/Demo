@@ -1,37 +1,61 @@
-<section class="navbar align-items-start">
-    <div class="container">
-        <div class="filter-bar d-flex flex-wrap">
-            <div class="form-group d-inline-block position-relative has-icon-left mb-2 mr-2 searching">
-                <input class="form-control bg-white search-bar" name="form-control-with-icon" #searchValue
-                       placeholder="Search" type="text">
-                <div class="form-control-position">
-                    <img src="assets/images/search.svg" class="img-fluid mb-1" alt="">
-                </div>
-            </div>
-            <div class="form-group d-inline-block position-relative has-icon-left mb-2 mr-2 selection">
-                <select class="custom-select">
-                    <option selected>Status: All</option>
-                    <option>Missed Call</option>
-                    <option>Follow Up</option>
-                </select>
-            </div>
-            <div class="form-group d-inline-block position-relative mb-2 mr-2" style="cursor: pointer;">
-                <div class="filter d-flex align-self-center">
-                    <img src="assets/images/filter.svg" class="mr-2" alt="">
-                    <span class="align-self-center">Filter</span>
-                </div>
-            </div>
-            <div class="form-group d-inline-block position-relative mb-2 mr-2" style="cursor: pointer;">
-                <div class="filter d-flex align-self-center">
-                    <img src="assets/images/customize.svg" class="mr-2" alt="">
-                    <span class="align-self-center">Customize</span>
-                </div>
-            </div>
+<section class="container">
+    <div class="row">
+        <div class="col-12 py-3 mt-5">
+            <form class="example-form mx-auto d-flex align-items-start">
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Search Movie/series/episode</mat-label>
+                    <input matInput
+                           type="text"
+                           aria-label="Search Movie/series/episode"
+                           (keyup.enter)="searchMovie(search)"
+                           [matAutocomplete]="auto"
+                           placeholder="Ex. Captain America" #search
+                           [formControl]="searchFormControl">
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let state of list" [value]="state.Title">
+                            <img class="example-option-img mr-2" aria-hidden [src]="state.Poster" height="25" width="25"
+                                 style="object-fit: scale-down;">
+                            <span>{{state.Title}}</span> |
+                            <small>Year: {{state.Year}}</small>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button type="button" class="btn" color="primary" (click)="searchMovie(search)">Primary</button>
+            </form>
         </div>
-        <div class="new-btn">
-            <button class="btn new-call-btn px-4">+ New Call</button>
+
+        <div class="text-center col-12 py-3" *ngIf="!listLength">
+            Looks like you don't have searched any movie name
+        </div>
+
+
+        <div class="col-md-4 mb-3" *ngFor="let item of list; let i = index">
+            <mat-card class="example-card">
+                <img mat-card-image src="{{item.Poster}}"
+                     alt="Photo of a {{item.Title}}">
+                <mat-card-content>
+                    <mat-card-title class="mb-2">{{item.Title}}</mat-card-title>
+                    <p class=" mb-2">Type: <span class="font-weight-bold">{{item.Type}}</span></p>
+                    <p class="">Year: <span class="font-weight-bold">{{item.Year}}</span></p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div class="col-12" *ngIf="listLength">
+            <mat-paginator [length]="listLength"
+                           [pageSize]="10"
+                           (page)="changePage($event)"
+                           aria-label="Select page">
+            </mat-paginator>
         </div>
     </div>
 </section>
 
 <router-outlet></router-outlet>
+<ngx-spinner
+        bdColor="rgba(51,51,51,0.8)"
+        size="medium"
+        color="#fff"
+        type="ball-triangle-path"
+></ngx-spinner>
